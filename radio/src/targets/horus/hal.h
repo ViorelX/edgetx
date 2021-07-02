@@ -1016,4 +1016,23 @@
   #define GPS_RCC_APB2Periph            0
 #endif
 
+#if defined(RADIO_T18) && defined(INTERNAL_GPS)
+#define GPS_RCC_AHB1Periph            RCC_AHB1Periph_GPIOE
+#define GPS_RCC_APB1Periph            RCC_APB1Periph_UART8
+#define GPS_RCC_APB2Periph            0
+#define GPS_USART                     UART8
+#define GPS_GPIO_AF                   GPIO_AF_UART8
+#define GPS_USART_IRQn                UART8_IRQn
+#define GPS_USART_IRQHandler          UART8_IRQHandler
+#define GPS_UART_GPIO                 GPIOE
+#define GPS_TX_GPIO_PIN               GPIO_Pin_1 // PE.01
+#define GPS_RX_GPIO_PIN               GPIO_Pin_0 // PE.00
+#define GPS_TX_GPIO_PinSource         GPIO_PinSource1
+#define GPS_RX_GPIO_PinSource         GPIO_PinSource0
+#elif !defined(INTERNAL_GPS)
+  #define GPS_RCC_AHB1Periph            0
+  #define GPS_RCC_APB1Periph            0
+  #define GPS_RCC_APB2Periph            0
+#endif
+
 #endif // _HAL_H_
